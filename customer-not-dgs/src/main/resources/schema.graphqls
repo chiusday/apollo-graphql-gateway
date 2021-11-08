@@ -6,4 +6,17 @@ type Customer {
     id: ID!
     firstName: String!
     lastName: String!
+    contacts: [Contact]
+}
+
+type Contact {
+    id: ID!
+    customerId: ID!
+    contactType: ContactType!
+    value: String!
+}
+
+enum ContactType {
+    MOBILE,
+    EMAIL
 }
