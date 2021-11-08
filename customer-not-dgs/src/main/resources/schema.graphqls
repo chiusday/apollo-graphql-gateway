@@ -6,7 +6,10 @@ type Customer {
     id: ID!
     firstName: String!
     lastName: String!
+    # fetching is done one-by-one
     contacts: [Contact]
+    # fetching is batched in a single call
+    contactsBatched: [Contact]
 }
 
 type Contact {
