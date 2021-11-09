@@ -1,0 +1,27 @@
+type Query {
+    customer(id: ID): Customer
+
+    customers: [Customer]
+}
+
+type Customer {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    # fetching is done one-by-one
+    contacts: [Contact]
+    # fetching is batched in a single call
+    contactsBatched: [Contact]
+}
+
+type Contact {
+    id: ID!
+    customerId: ID!
+    contactType: ContactType!
+    value: String!
+}
+
+enum ContactType {
+    MOBILE,
+    EMAIL
+}
