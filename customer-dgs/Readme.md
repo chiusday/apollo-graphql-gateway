@@ -96,3 +96,38 @@ These are the changes required:
         return contactDataService.contacts(customer.getId());
     }
    ```
+
+## Batch Loading to solve the N+1 problem
+Use DataLoaders to collect the keys from a parent and fetch the list of child object related to the set of parent keys.
+This eliminates the need to call the child fetch method N times, instead call once.
+There are a number of ways to implement batch loading in DGS. In this sample, MappedBatchLoader is used because it easily handles cases where child object is not found for a parent key(s)
+
+### Steps to implement Batch Loading in DGS
+
+- Implement a MappedBatchLoader interface
+   ```
+    public class ContractsDataLoader implements MappedBatchLoader<String, Contact> {
+   ```
+- Annotate the class with @DgsDataLoader with name parameter
+   ```
+    @DgsDataLoader(name = "CONTACTS_DATALOADER")
+    public class ContractsDataLoader implements MappedBatchLoader<String, Contact> {
+   ```
+- Implement the "load" method to fetch the collection of child objects based on the given set of keys from parent object
+   ```
+    @Override
+    public CompletionStage<Map<String, List<Contact>>> load(Set<String> customerIds) {
+        return CompletableFuture.supplyAsync(() ->
+                contactDataService.contactsFor(customerIds)
+            );
+    }
+   ```
+- Use the MappedDataLoader in the DataFetcher (ContactDataFetcher). "getSource()" returns the parentType instance
+   ```
+    @DgsData(parentType = "Customer", field = "contactsBatched")
+    public CompletableFuture<List<Contact>> batchedContacts(DgsDataFetchingEnvironment dfe) {
+        DataLoader contactsDataLoader = dfe.getDataLoader(ContactsDataLoader.class);
+        Customer customer = dfe.getSource();
+        return contactsDataLoader.load(customer.getId().toString());
+    }
+   ```

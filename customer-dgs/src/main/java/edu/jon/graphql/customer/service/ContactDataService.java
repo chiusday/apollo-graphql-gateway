@@ -28,11 +28,11 @@ public class ContactDataService {
         );
     }
 
-    public Map<UUID, List<Contact>> contactsFor(Set<UUID> customerIds) {
+    public Map<String, List<Contact>> contactsFor(Set<String> customerIds) {
         log.info("Fetching Contacts asynchronously");
 
-        Map<UUID, List<Contact>> map = new HashMap<>();
-        for (UUID id : customerIds) map.put(id, contacts(id));
+        Map<String, List<Contact>> map = new HashMap<>();
+        for (String id : customerIds) map.put(id, contacts(UUID.fromString(id)));
         return map;
     }
 }
