@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@apollo/gateway": "^0.43.1",
+    "apollo-server": "^3.5.0"
+  },
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "Federated GraphQL Microservices with Apollo Gateway",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "jon",
+  "license": "ISC"
+}
