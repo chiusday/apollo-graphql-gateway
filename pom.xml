@@ -12,6 +12,7 @@
         <module>customer-not-dgs</module>
         <module>account-not-dgs</module>
         <module>customer-dgs</module>
+        <module>account-dgs</module>
     </modules>
 
     <properties>
