@@ -1,4 +1,5 @@
 ## Steps to convert a graphql-java project into a federated graphql using Nelfix DGS framework
+
 ### 1. Add DGS depenedencies and dependency management
 ```
     <dependency>
@@ -48,8 +49,9 @@ and
     }
    ```
 
-### 3. move the graphql schema files (*.graphqls) to "resources/schema" directory
-
+### 3. move the graphql schema files (*.graphqls) to "resources/schema" directory  
+  
+  
 ## DataFetcher (Resolver) for Child Objects
 Schema types with fields that are other types (ex: Customer -> Contact) has a parent child relationship
    ```
