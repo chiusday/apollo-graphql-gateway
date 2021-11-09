@@ -1,0 +1,5 @@
+type Account {
+    id: ID!
+    customerId: ID!
+    currency: Currency!
+}

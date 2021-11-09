@@ -1,0 +1,5 @@
+type Query {
+    account(id: ID): Account
+    accountsFor(customerId: ID): [Account]
+    accountsBatched()
+}
