@@ -110,3 +110,7 @@ _Now, GraphQL requests to Customer can include accountsForCustomer field and wil
 This is great, however, if accounts have to be fetched for multiple customers it will make N calls to account
 microservice. This is know as [The N+1 Problem](https://medium.com/the-marcy-lab-school/what-is-the-n-1-problem-in-graphql-dd4921cb3c1a).  
 
+## Implementing BatchLoaders
+* add a new field in [account-dgs](account-dgs/src/main/resources/schema/account.graphqls).Customer that corresponds to
+a DGS BatchLoader implementation  
+* The rest of the steps are explained [here](customer-dgs/Readme.md#steps-to-implement-batch-loading-in-dgs)  
