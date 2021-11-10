@@ -1,11 +1,14 @@
 package edu.jon.graphql.customer.service;
 
+import static java.util.Map.Entry;
+
 import edu.jon.graphql.customer.model.Contact;
 import edu.jon.graphql.customer.model.ContactType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -31,8 +34,8 @@ public class ContactDataService {
     public Map<String, List<Contact>> contactsFor(Set<String> customerIds) {
         log.info("Fetching Contacts asynchronously");
 
-        Map<String, List<Contact>> map = new HashMap<>();
-        for (String id : customerIds) map.put(id, contacts(UUID.fromString(id)));
-        return map;
+        return customerIds.stream()
+                .map(cId -> new AbstractMap.SimpleEntry<>(cId, contacts(UUID.fromString(cId))))
+                .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
     }
 }

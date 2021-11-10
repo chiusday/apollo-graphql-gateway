@@ -104,7 +104,9 @@
 ## That's it! 
 * Run gateway 
 * customer-dgs 
-* account-dgs
-  
-_GraphQL requests to Customer can include accountsForCustomer field and will return related accounts_
-  
+* account-dgs    
+_Now, GraphQL requests to Customer can include accountsForCustomer field and will return related accounts_
+
+This is great, however, if accounts have to be fetched for multiple customers it will make N calls to account
+microservice. This is know as [The N+1 Problem](https://medium.com/the-marcy-lab-school/what-is-the-n-1-problem-in-graphql-dd4921cb3c1a).  
+

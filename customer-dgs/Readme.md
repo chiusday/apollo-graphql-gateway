@@ -108,12 +108,12 @@ There are a number of ways to implement batch loading in DGS. In this sample, Ma
 
 - Implement a MappedBatchLoader interface
    ```
-    public class ContractsDataLoader implements MappedBatchLoader<String, Contact> {
+    public class ContractsDataLoader implements MappedBatchLoader<String, List<Contact>> {
    ```
 - Annotate the class with @DgsDataLoader with name parameter
    ```
     @DgsDataLoader(name = "CONTACTS_DATALOADER")
-    public class ContractsDataLoader implements MappedBatchLoader<String, Contact> {
+    public class ContractsDataLoader implements MappedBatchLoader<String, List<Contact>> {
    ```
 - Implement the "load" method to fetch the collection of child objects based on the given set of keys from parent object
    ```

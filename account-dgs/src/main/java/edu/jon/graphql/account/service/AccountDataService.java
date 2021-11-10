@@ -5,10 +5,9 @@ import edu.jon.graphql.account.model.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -32,6 +31,18 @@ public class AccountDataService {
         }
 
         return accounts;
+    }
+
+    /**
+     * This is simulating a data storage call where a list of keys is passed and a complete
+     * ResultSet is returned in 1 call.
+     * @param customerIds Set of keys where each key corresponds to a 0-N data storage records(s)
+     * @return ResultSet that corresponds to all the keys in customerIds
+     */
+    public Map<String, List<Account>> getAccountsForCustomers(Set<String> customerIds) {
+        return customerIds.stream()
+                .map(cId -> new AbstractMap.SimpleEntry<>(cId, getAccountsFor(cId)))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     private Account randomAccount(String customerId, int i) {

@@ -10,4 +10,5 @@ type Customer @key(fields: "id") @extends {
     # add fields below that this service's domain (Account)
     # can supplement to foreign type/entity Customer
     accountsForCustomer: [Account]
+    accountsForCustomers: [Account]
 }
