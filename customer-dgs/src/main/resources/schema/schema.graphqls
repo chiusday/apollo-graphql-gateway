@@ -4,7 +4,7 @@ type Query {
     customers: [Customer]
 }
 
-type Customer {
+type Customer @key(fields: "id") {
     id: ID!
     firstName: String!
     lastName: String!

@@ -3,3 +3,11 @@ type Account {
     customerId: ID!
     currency: Currency!
 }
+
+# This is a stub of Customer type in customer-dgs service
+type Customer @key(fields: "id") @extends {
+    id: ID! @external
+    # add fields below that this service's domain (Account)
+    # can supplement to foreign type/entity Customer
+    accountsForCustomer: [Account]
+}

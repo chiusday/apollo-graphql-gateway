@@ -1,4 +1,4 @@
-## Steps to convert a graphql-java project into a federated graphql using Nelfix DGS framework
+## Since Netflix DGS framework is built on top of graphql-java, it is easy to supplement graphql-java projects with DGS.
 
 ### 1. Add DGS depenedencies and dependency management
 ```
