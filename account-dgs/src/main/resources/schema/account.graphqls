@@ -10,6 +10,8 @@ type Customer @key(fields: "id") @extends {
     # add fields below that this service's domain (Account)
     # can supplement to foreign type/entity Customer
     accountsForCustomer: [Account]
+    # Get accounts for each Customer 1-by-1 (N calls to child data)
+    accountsForCustomersSync: [Account]
     # BatchLoader to get list of Accounts for list of Customers
-    accountsForCustomers: [Account]
+    accountsForCustomersBatched: [Account]
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 public class CustomerDataService {
     public List<Customer> getAllCustomers() {
-        return mockCustomers(50000);
+        return mockCustomers(1000);
     }
 
     public Customer getCustomer(String id) {

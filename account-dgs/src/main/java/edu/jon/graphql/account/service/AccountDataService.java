@@ -12,7 +12,10 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class AccountDataService {
+    int dbLag = 3;
+
     public Account getAccount(String id) {
+        try { Thread.sleep(dbLag); } catch (InterruptedException e) { e.printStackTrace(); }
         log.info("Fetch Account: "+id.toString());
         return Account.builder()
                 .id(UUID.fromString(id))
@@ -21,7 +24,12 @@ public class AccountDataService {
                 .build();
     }
 
-    public List<Account> getAccountsFor(String customerId) {
+    public List<Account> getAccounts(String customerId) {
+        try { Thread.sleep(dbLag); } catch (InterruptedException e) { e.printStackTrace(); }
+        return generateAccounts(customerId);
+    }
+
+    public List<Account> generateAccounts(String customerId) {
         int randBit = new Random().nextInt(2);
 
         List<Account> accounts = new ArrayList<>();
@@ -40,8 +48,9 @@ public class AccountDataService {
      * @return ResultSet that corresponds to all the keys in customerIds
      */
     public Map<String, List<Account>> getAccountsForCustomers(Set<String> customerIds) {
+        try { Thread.sleep(dbLag); } catch (InterruptedException e) { e.printStackTrace(); }
         return customerIds.stream()
-                .map(cId -> new AbstractMap.SimpleEntry<>(cId, getAccountsFor(cId)))
+                .map(cId -> new AbstractMap.SimpleEntry<>(cId, generateAccounts(cId)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 

@@ -28,7 +28,7 @@ public class AccountDataFetcher {
 
     @DgsQuery
     public List<Account> accountsFor(@InputArgument String customerId) {
-        return accountDataService.getAccountsFor(customerId);
+        return accountDataService.getAccounts(customerId);
     }
 
     /***
@@ -37,16 +37,21 @@ public class AccountDataFetcher {
      */
     @DgsEntityFetcher(name = DgsConstants.CUSTOMER.TYPE_NAME)
     public Customer getCustomer(Map<String, Object> values) {
-        return new Customer((String)values.get("id"), null, null);
+        return new Customer((String)values.get("id"), null, null, null);
     }
 
     @DgsData(parentType = DgsConstants.CUSTOMER.TYPE_NAME, field = DgsConstants.CUSTOMER.AccountsForCustomer)
     public List<Account> accountsForCustomer(DgsDataFetchingEnvironment dfe) {
         Customer customer = dfe.getSource();
-        return accountDataService.getAccountsFor(customer.getId());
+        return accountDataService.getAccounts(customer.getId());
     }
 
-    @DgsData(parentType = DgsConstants.CUSTOMER.TYPE_NAME, field = DgsConstants.CUSTOMER.AccountsForCustomers)
+    @DgsData(parentType = DgsConstants.CUSTOMER.TYPE_NAME, field = DgsConstants.CUSTOMER.AccountsForCustomersSync)
+    public List<Account> getAccountsForCustomers(DgsDataFetchingEnvironment dfe) {
+        return accountsForCustomer(dfe);
+    }
+
+    @DgsData(parentType = DgsConstants.CUSTOMER.TYPE_NAME, field = DgsConstants.CUSTOMER.AccountsForCustomersBatched)
     public CompletableFuture<List<Account>> getAccountsOfCustomers(DgsDataFetchingEnvironment dfe) {
         DataLoader accountsOfCustomersLoader = dfe.getDataLoader(AccountsForCustomersDataLoader.class);
         Customer customer = dfe.getSource();
