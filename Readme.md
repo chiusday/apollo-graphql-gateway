@@ -1,3 +1,5 @@
+#### Supplement graphql-java projects with Netflix DGS Steps [here](customer-dgs/Readme.md)
+
 ## Steps on how to enable Apollo Gateway to add type(s) from one GraphQL microserviceto another.
    _Note: this example will enable account-dgs to extend Customer type to add list of accounts of a given customer represented 
    by the field "accountsForCustomer"_
