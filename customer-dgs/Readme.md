@@ -49,9 +49,10 @@ and
     }
    ```
 
-### 3. move the graphql schema files (*.graphqls) to "resources/schema" directory  
+### 3. move the graphql schema files (*.graphqls) to "resources/schema" directory. That's it! The project can now take full advantage of DGS features.  
   
-  
+- - -  
+
 ## DataFetcher (Resolver) for Child Objects
 Schema types with fields that are other types (ex: Customer -> Contact) has a parent child relationship
    ```
