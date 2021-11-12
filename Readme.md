@@ -116,4 +116,4 @@ This is known as [The N+1 Problem](https://medium.com/the-marcy-lab-school/what-
 ## Implementing BatchLoaders to solve the N+1 Problem
 * add a new field in [account-dgs.schema.graphqls](account-dgs/src/main/resources/schema/account.graphqls).Customer that corresponds to
 a DGS BatchLoader implementation - _accountsForCustomersBatched_  
-* The rest of the steps are explained [here](customer-dgs/Readme.md#steps-to-implement-batch-loading-in-dgs)  
+* The rest of the steps are explained [here](customer-dgs/Readme.md#Batch-Loading-to-solve-the-N+1-problem)  
