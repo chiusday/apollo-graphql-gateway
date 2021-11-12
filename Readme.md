@@ -1,4 +1,4 @@
-#### Supplement graphql-java projects with Netflix DGS Steps [here](customer-dgs/Readme.md)
+#### Steps to supplement graphql-java projects with Netflix DGS is detailed [here](customer-dgs/Readme.md)
 
 ## Steps on how to enable Apollo Gateway to add type(s) from one GraphQL microserviceto another.
    _Note: this example will enable account-dgs to extend Customer type to add list of accounts of a given customer represented 
@@ -110,9 +110,10 @@
 _Now, GraphQL requests to Customer can include accountsForCustomer field and will return related accounts_
 
 This is great, however, if accounts have to be fetched for multiple customers it will make N calls to account
-microservice. This is known as [The N+1 Problem](https://medium.com/the-marcy-lab-school/what-is-the-n-1-problem-in-graphql-dd4921cb3c1a).  
+microservice (ex: [account-dgs.schema.graphqls](account-dgs/src/main/resources/schema/account.graphqls).Customer.accountsForCustomersSync). 
+This is known as [The N+1 Problem](https://medium.com/the-marcy-lab-school/what-is-the-n-1-problem-in-graphql-dd4921cb3c1a).  
 
-## Implementing BatchLoaders
-* add a new field in [account-dgs](account-dgs/src/main/resources/schema/account.graphqls).Customer that corresponds to
-a DGS BatchLoader implementation  
+## Implementing BatchLoaders to solve the N+1 Problem
+* add a new field in [account-dgs.schema.graphqls](account-dgs/src/main/resources/schema/account.graphqls).Customer that corresponds to
+a DGS BatchLoader implementation - _accountsForCustomersBatched_  
 * The rest of the steps are explained [here](customer-dgs/Readme.md#steps-to-implement-batch-loading-in-dgs)  
