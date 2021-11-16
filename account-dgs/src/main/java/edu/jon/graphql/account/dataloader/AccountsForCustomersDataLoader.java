@@ -1,4 +1,4 @@
-package edu.jon.graphql.account;
+package edu.jon.graphql.account.dataloader;
 
 import com.netflix.graphql.dgs.DgsDataLoader;
 import edu.jon.graphql.account.model.Account;

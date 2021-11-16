@@ -1,7 +1,7 @@
 package edu.jon.graphql.customer.fetcher;
 
 import com.netflix.graphql.dgs.*;
-import edu.jon.graphql.customer.DataLoaders.ContactsDataLoader;
+import edu.jon.graphql.customer.dataloader.ContactsDataLoader;
 import edu.jon.graphql.customer.model.Contact;
 import edu.jon.graphql.customer.model.Customer;
 import edu.jon.graphql.customer.service.ContactDataService;

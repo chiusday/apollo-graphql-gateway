@@ -1,7 +1,7 @@
 package edu.jon.graphql.account.fetcher;
 
 import com.netflix.graphql.dgs.*;
-import edu.jon.graphql.account.AccountsForCustomersDataLoader;
+import edu.jon.graphql.account.dataloader.AccountsForCustomersDataLoader;
 import edu.jon.graphql.account.generated.DgsConstants;
 import edu.jon.graphql.account.generated.types.Customer;
 import edu.jon.graphql.account.service.AccountDataService;

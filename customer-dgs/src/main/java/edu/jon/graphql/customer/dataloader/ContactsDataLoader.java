@@ -1,4 +1,4 @@
-package edu.jon.graphql.customer.DataLoaders;
+package edu.jon.graphql.customer.dataloader;
 
 import com.netflix.graphql.dgs.DgsDataLoader;
 import edu.jon.graphql.customer.model.Contact;
