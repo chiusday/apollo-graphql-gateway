@@ -1,6 +1,19 @@
-#### Steps to supplement graphql-java projects with Netflix DGS is detailed [here](customer-dgs/Readme.md)
+_**Note: This project is to demonstrate an API gateway for GraphQL services and avoid coupled architecture of schema stitching. Data is dynamically generated and not persisted.**_
 
-## Steps on how to enable Apollo Gateway to add type(s) from one GraphQL microserviceto another.
+## This repository has 5 projects  
+1. customer-not-dgs - graphql-java project as a base project to show how to supplement existing graphql-java project with Netflix DGS. Steps to supplement graphql-java projects with Netflix DGS is detailed [here](customer-dgs/Readme.md)
+2. customer-dgs - this is the customer-not-dgs project after it is supplemented with Netflix DGS framework
+3. account-not-dgs - graphql-java project that will be supplemented with DGS.
+4. account-dgs - account-not-dgs project supplemented by DGS.
+5. gateway - API Gateway tailored for GraphQL services federation.  
+![](gateway/images/apollo-graphql-gateway.png)
+   
+### How to run
+1. Start `customer-dgs` by running the Spring Boot app from IDE or `mvn spring-boot:run` while in [customer-dgs](customer-dgs) directory.
+2. Start `account-dgs` by running the Spring Boot app from IDE or `mvn spring-boot:run` while in [accounbt-dgs](account-dgs) directory.
+3. Start `gateway` by executing `npm start` command while in [gateway](gateway) directory
+
+## Steps on how to enable Apollo Gateway to add type(s) from one GraphQL microservice to another.
    _Note: this example will enable account-dgs to extend Customer type to add list of accounts of a given customer represented 
    by the field "accountsForCustomer"_
 
